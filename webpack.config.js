@@ -28,19 +28,24 @@ module.exports = {
 	devtool: (config.NODE_ENV) ? 'cheap-module-source-map' : '',
 	resolve:{
 		modulesDirectories: ['node_modules'],
-		extensions: ['', '.js']
+		extensions: ['', '.js', '.jsx']
 	},
 	resolveLoader: {
 		modulesDirectories: ['node_modules'],
 		moduleTemplates: ['*-loader'],
-		extensions: ['', '.js']
+		extensions: ['', '.js', '.jsx']
 	},
 	module: {
 		loaders: [
 			{
 				test: /\.js$/,
-				exclude: /[\/\\]node_modules[\/\\]/,
-				loader: 'babel?presets[]=es2015'
+				loader: 'babel',
+				exclude: /[\/\\]node_modules[\/\\]/
+			},
+			{
+				test: /\.jsx$/,
+				loader: 'babel',
+				exclude: /[\/\\]node_modules[\/\\]/
 			}
 		]
 	},

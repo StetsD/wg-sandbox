@@ -39,7 +39,7 @@ const config = {
 			_CSS_INPUT: '/*.scss',
 			_PUG_INPUT: '/pages/*.pug',
 
-			_JS_EXT: '/**/*.js',
+			_JS_EXT: '/**/*.{js,jsx}',
 			_CSS_EXT: '/**/*.scss',
 			_PUG_EXT: '/**/*.pug',
 			_IMG_EXT: '/**/*.{png,gif,jpg,svg,jpeg}',
