@@ -8,6 +8,7 @@ let {SRC_DIR, PUB_DIR} = config;
 //Common Modules
 import gulp from 'gulp';
 import GulpLoadPlugins from 'gulp-load-plugins';
+import BS from 'browser-sync';
 let G = GulpLoadPlugins(config.GLP);
 
 
@@ -21,5 +22,6 @@ module.exports = () => {
 			return 'Error: ' + error.message;
 		}))
 		.pipe(G.if(!config.NODE_ENV, G.htmlPrettify({indent_char: '	', indent_size: 1})))
-		.pipe(gulp.dest(PUB_DIR._BASE + PUB_DIR._TEMP));
+		.pipe(gulp.dest(PUB_DIR._BASE + PUB_DIR._TEMP))
+		.pipe(BS.reload({stream:true}));
 };

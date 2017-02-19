@@ -3,8 +3,8 @@
 import Menu from './menu';
 
 let menu = new Menu();
-console.log(menu.showMenu())
 
+console.log(menu.showMenu())
 $('#require-menu').on('click', function(){
 
 	require.ensure([], function(){
@@ -12,6 +12,6 @@ $('#require-menu').on('click', function(){
 		var test = new Test();
 
 		alert(test.say());
-	})
 
+	});
 });

@@ -8,6 +8,7 @@ let {SRC_DIR, PUB_DIR} = config;
 //Common Modules
 import gulp from 'gulp';
 import GulpLoadPlugins from 'gulp-load-plugins';
+import BS from 'browser-sync';
 let G = GulpLoadPlugins(config.GLP);
 
 
@@ -17,6 +18,6 @@ module.exports = () => {
 		.on('error', G.notify.onError(function(error){
 			return 'Error: ' + error.message;
 		}))
-
-		.pipe(gulp.dest(PUB_DIR._BASE + PUB_DIR._DATA));
+		.pipe(gulp.dest(PUB_DIR._BASE + PUB_DIR._DATA))
+		.pipe(BS.reload({stream:true}));
 };

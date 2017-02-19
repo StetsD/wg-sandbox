@@ -27,7 +27,7 @@
     "gulp-sourcemaps": "^2.4.0",
     "gulplog": "^1.0.0",
     "run-sequence": "^1.2.2",
-    "webpack-stream": "^3.2.0"
+    "webpack": "^1.12.15"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

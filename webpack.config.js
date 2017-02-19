@@ -58,6 +58,6 @@ module.exports = {
 		// 	name: 'common'
 		// }),
 
-		
+
 	]
 };
