@@ -11,15 +11,15 @@ const config = {
 			port: process.env.PORT || 3000,
 			index: "_navigator.html"
 		},
-	
+
 	//Watch options
 		WATCH:{
 			js: true,
 			css: true,
 			pug: true,
-			images: true,
-			fonts: false,
-			data: false
+			img: true,
+			fonts: true,
+			data: true
 		},
 
 	//Environment variable (development = 'dev' / production = 'prod')
@@ -27,20 +27,24 @@ const config = {
 
 	//INPUT
 		SRC_DIR: {
-			
+
 			_BASE: './sources',
 			_JS: '/js',
 			_CSS: '/css',
 			_IMG: '/img',
-			_TEMP: '/layouts',
-			_FONT: '/fonts',
+			_PUG: '/layouts',
+			_FONTS: '/fonts',
 			_DATA: '/_data',
-			
-			_CSS_INPUT: '/common.scss',
-			_TEMP_INPUT: '/pages/*.pug',
-			_IMG_INPUT: '/**/*.{png,gif,jpg,svg,jpeg}',
-			_FONT_INPUT: '/**/*.{eot,svg,ttf,woff,woff2}',
-			_DATA_INPUT: '/**/*.json'
+
+			_CSS_INPUT: '/*.scss',
+			_PUG_INPUT: '/pages/*.pug',
+
+			_JS_EXT: '/**/*.js',
+			_CSS_EXT: '/**/*.scss',
+			_PUG_EXT: '/**/*.pug',
+			_IMG_EXT: '/**/*.{png,gif,jpg,svg,jpeg}',
+			_FONTS_EXT: '/**/*.{eot,svg,ttf,woff,woff2}',
+			_DATA_EXT: '/**/*.json'
 		},
 
 	//OUTPUT
@@ -49,8 +53,8 @@ const config = {
 			_JS: '/js',
 			_CSS: '/css',
 			_IMG: '/img',
-			_TEMP: '/',
-			_FONT: '/fonts',
+			_PUG: '/',
+			_FONTS: '/fonts',
 			_DATA: '/_data'
 		},
 

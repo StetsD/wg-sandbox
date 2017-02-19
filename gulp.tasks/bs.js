@@ -17,21 +17,33 @@ import sequence from 'run-sequence';
 
 gulp.task('reload', function(){
 	return BSReload();
-})
+});
 
 
 //Starts Server
 module.exports = () => {
+
 	function BsServe(){
 		BS.init(config.BS);
 	}
 
-	sequence('clean', ['js', 'styles', 'pug', 'images', 'fonts', 'data'], 'navigator', BsServe);
+	function parseExt(str, parent){
+		let exts = str.match(/[a-z|0-9]+/ig),
+			cleanP = parent.slice(1),
+			modExt = exts.map((ext)=>{return `${cleanP}/**/*.${ext}`});
 
-	if(WATCH.js){gulp.watch(SRC_DIR._BASE + SRC_DIR._JS + '/**/*.js', ()=>sequence('js', 'reload'))}
-	if(WATCH.css){gulp.watch(SRC_DIR._BASE + SRC_DIR._CSS + '/**/*.scss', ()=>sequence('styles', 'reload'))}
-	if(WATCH.pug){gulp.watch(SRC_DIR._BASE + SRC_DIR._TEMP + '/**/*.pug', ()=>sequence('pug', 'reload'))}
-	if(WATCH.images){gulp.watch('.' + SRC_DIR._IMG + SRC_DIR._IMG_INPUT, {cwd: SRC_DIR._BASE}, ()=>sequence('images', 'reload'))}
-	if(WATCH.fonts){gulp.watch('.' + SRC_DIR._FONT + SRC_DIR._FONT_INPUT, {cwd: SRC_DIR._BASE}, ()=>sequence('fonts', 'reload'))}
-	if(WATCH.data){gulp.watch('.' + SRC_DIR._DATA + SRC_DIR._DATA_INPUT, {cwd: SRC_DIR._BASE}, ()=>sequence('data', 'reload'))}
+		return modExt;
+	}
+
+	sequence('clean', ['js', 'css', 'pug', 'img', 'fonts', 'data'], 'navigator', BsServe);
+
+
+	for(let option in WATCH){
+		if(WATCH[option]){
+			let path = option.toString(),
+				PATH = path.toUpperCase();
+
+			gulp.watch(parseExt(SRC_DIR[`_${PATH}_EXT`], SRC_DIR[`_${PATH}`]), {cwd: SRC_DIR._BASE}, ()=>sequence(path, 'reload'))
+		}
+	}
 };

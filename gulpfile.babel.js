@@ -21,13 +21,13 @@ function requireTask(task, path){
 requireTask('js', './gulp.tasks/js');
 
 //Styles
-requireTask('styles', './gulp.tasks/styles');
+requireTask('css', './gulp.tasks/css');
 
 //Pug
 requireTask('pug', './gulp.tasks/pug');
 
 //Images
-requireTask('images', './gulp.tasks/images');
+requireTask('img', './gulp.tasks/img');
 
 //Fonts
 requireTask('fonts', './gulp.tasks/fonts');

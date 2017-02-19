@@ -10,5 +10,5 @@ import sequence from 'run-sequence';
 
 //Build project
 module.exports = () => {
-	sequence('clean', ['js', 'styles', 'pug', 'images', 'fonts', 'data'], 'navigator');
+	sequence('clean', ['js', 'css', 'pug', 'img', 'fonts', 'data'], 'navigator');
 };
